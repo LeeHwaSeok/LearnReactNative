@@ -1,25 +1,32 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Button, StyleSheet} from 'react-native';
-import Box from './components/Box';
-import Counter from './components/Counter';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import AddTodo from './components/AddTodo';
+import DateHaed from './components/DataHead';
+import Empty from './components/Empty';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-const App = () => {
-  const [count, setCount] = useState(0);
+function App() {
+  const today = new Date();
 
-  const onIncrease = () => setCount(count + 1);
-  const onDecrease = () => setCount(count - 1);
+  const [todos, setTodos] = useState([
+    {id: 1, text: '작업환결 설정', done: true},
+    {id: 2, text: 'React-Native 기초 공부', done: false},
+    {id: 3, text: 'makes Todolist', done: false},
+  ]);
 
   return (
-    <SafeAreaView style={styles.full}>
-      <Counter count={count} onDecrease={onDecrease} onIncrease={onIncrease} />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView edges={['bottom']} style={styles.block}>
+        <DateHaed date={today} />
+        <Empty />
+        <AddTodo />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
-};
-
+}
 const styles = StyleSheet.create({
-  full: {
+  block: {
     flex: 1,
-    // backgroundColor: 'cyan',
   },
 });
 
