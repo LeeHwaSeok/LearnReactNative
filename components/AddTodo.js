@@ -8,10 +8,11 @@ import {
   Keyboard,
 } from 'react-native';
 
-function AddTodo() {
+function AddTodo({onInsert}) {
   const [text, setText] = useState('');
 
   const onPress = () => {
+    onInsert(text);
     setText('');
     Keyboard.dismiss();
   };
@@ -19,14 +20,19 @@ function AddTodo() {
   return (
     <View style={styles.block}>
       <TextInput
+        /*placeholder => flutter의 texthint와 대비되는 함수*/
         placeholder="할 일을 입력하세요"
         style={styles.input}
+        /*onchagetext의 업데이트 된 값을 value로 전달받음*/
         value={text}
+        /*onChangeText는 텍스트의 변화를 감지할 때마다, 업데이트*/
         onChangeText={setText}
+        /*onSubmitEditing는 Enter를 눌렀을 때, 호출되는 함수*/
         onSubmitEditing={onPress}
         returnKeyType="done"
       />
       <View style={styles.circleWrapper}>
+        {/*TouchableNativeFeedback은 안드로이드 터치처럼 물결형식으로 퍼지는 효과를 주기 위함*/}
         <TouchableNativeFeedback onPress={onPress}>
           <View style={styles.buttonStyle}>
             <Image
