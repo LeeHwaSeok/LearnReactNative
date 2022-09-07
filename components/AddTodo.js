@@ -23,7 +23,7 @@ function AddTodo({onInsert}) {
         /*placeholder => flutter의 texthint와 대비되는 함수*/
         placeholder="할 일을 입력하세요"
         style={styles.input}
-        /*onchagetext의 업데이트 된 값을 value로 전달받음*/
+        /*value는 textinput을 보여주는 매겨변수입니다.*/
         value={text}
         /*onChangeText는 텍스트의 변화를 감지할 때마다, 업데이트*/
         onChangeText={setText}
