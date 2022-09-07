@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   block: {
     padding: 16,
     backgroundColor: '#26a69a',
+    // backgroundColor: 'white',
   },
   dateText: {
     fontSize: 24,
