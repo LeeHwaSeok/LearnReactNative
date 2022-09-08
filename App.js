@@ -27,14 +27,18 @@ function App() {
    * [이전 데이터를 받아서 새로운 데이터를 즉각적으로 피드백 하기 위함]
    * .get.then.catch 형식으로 사용 가능한데 이는 react native의 promise함수와 연관이 있는데
    * useEffect 함수는 Hooks 함수로 컴포넌트가 바뀔 때 마다 코드가 실행 됨
-   * 1번 인자 : 주시하고 싶은 값이 바뀌었을 때 호출 값[get, set 참고]
-   * 2번 인자 : 주시하고 싶은 값을 배열에 저장 [set 참고]
+   * 1번 인자 : 주시하고 싶은 값을 배열에 저장 [set 참고]
+   * 2번 인자 : 주시하고 싶은 값이 바뀌었을 때 호출 값[get, set 참고]
    *  get() => 데이터 불러오기
+   *  savedTodos의 return값을 setTodos에 저장합니다.
    *  set() => 데이터 저장하기
    */
   useEffect(() => {
     todosStorage.get().then(setTodos).catch(console.error);
   }, []);
+  // 1. then(r => setTodos(r))을 축약시킨 문법
+  // 2. 내가 알고있는 a = todosStorage.get()
+  //                 setTodos(a)와 동일하다
 
   useEffect(() => {
     todosStorage.set(todos).catch(console.error);

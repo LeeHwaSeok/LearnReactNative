@@ -1,7 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 const key = 'todos';
-
+/**
+ * AsyncStorage는 4~6mb의 임시 저장공간을 사용하는 api기능입니다.
+ * getItem(key) 데이터를 읽어 옵니다. [python의 read]
+ * setItem(key,value) 데이터를 작성합니다 [key라는 곳에 JSON.stringify(json 문자타입)으로 저장]
+ */
 const todosStorage = {
   async get() {
     try {
